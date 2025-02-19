@@ -13,3 +13,12 @@
 .word {
   @apply translate-y-full;
 }
+
+@layer components {
+  .group:hover .relative div:first-child {
+    transform: scale(2.25);
+  }
+  .relative div:first-child {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

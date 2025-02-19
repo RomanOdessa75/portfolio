@@ -10,6 +10,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import Image from "next/image";
 
 const Hero: FC = () => {
   const [titleScope, titleAnimate] = useAnimate();
@@ -60,18 +61,23 @@ const Hero: FC = () => {
               className="text-5xl md:text-6xl lg:text-8xl mt-40 md:mt-0"
               ref={titleScope}
             >
-              Crafting digital experiences through code and creative design
+              {/* Crafting digital experiences through code and creative design */}
+              Full-Stack Developer
             </motion.h1>
             <div className="flex flex-col md:flex-row md:items-center mt-10 items-start gap-6">
-              <motion.div
+              {/* <motion.div */}
+              <motion.h2
                 initial={{ opacity: 0, y: "100%" }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: 0.5,
-                  delay: 1.75,
+                  delay: 1,
                 }}
               >
-                <Button
+                I specialize in turning digital ideas into user-friendly
+                experiences, whether crafting sleek websites or seamless mobile
+                apps. We blend creativity with tech savvy.
+                {/* <Button
                   variant="secondary"
                   iconAfter={
                     <div className="overflow-hidden size-5">
@@ -119,13 +125,13 @@ const Hero: FC = () => {
                   delay: 2.2,
                 }}
               >
-                <Button variant="text">Let&apos;s talk</Button>
-              </motion.div>
+                <Button variant="text">Let&apos;s talk</Button>*/}
+              </motion.h2>
             </div>
           </div>
         </div>
         <div className="md:col-span-6 relative">
-          <motion.div
+          {/* <motion.div
             className="mt-20 md:mt-0 md:absolute md:right-0 md:top-0"
             style={{
               width: portraitWidth,
@@ -135,10 +141,23 @@ const Hero: FC = () => {
             <video
               src="/videos/13522169-hd_1920_1080_25fps.mp4"
               className="object-cover"
+              // className="object-fit"
               autoPlay
               loop
               muted
             />
+          </motion.div> */}
+          <motion.div
+            className="mt-20 md:mt-0 md:size-full md:absolute md:right-0 max-md:!w-full bg-black"
+            style={{
+              width: portraitWidth,
+            }}
+          >
+            {/* <Image
+              src={heroImage}
+              alt="My portrait"
+              className="size-full object-cover"
+            /> */}
           </motion.div>
         </div>
       </div>
@@ -149,6 +168,7 @@ const Hero: FC = () => {
 
 export default Hero;
 
+//-------------------- origin -------------------------------------------------
 // "use client";
 
 // import { FC, useEffect, useRef } from "react";
