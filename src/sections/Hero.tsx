@@ -114,6 +114,7 @@ const Hero: FC = () => {
 
 export default Hero;
 
+//---------------------------------------------------------------------------------------
 // "use client";
 
 // import { FC, useEffect, useRef } from "react";
