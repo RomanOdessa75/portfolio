@@ -40,7 +40,7 @@ const Hero: FC = () => {
     ["#000", "#000", "#b692a1"]
   );
 
-  const nameX = useTransform(scrollYProgress, [0, 1], ["0%", "55%"]);
+  const nameX = useTransform(scrollYProgress, [0, 1], ["2%", "55%"]);
   const nameY = useTransform(scrollYProgress, [0, 1], ["400%", "-250%"]);
   const nameScale = useTransform(scrollYProgress, [0, 1], [1, 2]);
 

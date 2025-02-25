@@ -8,8 +8,8 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <Intro />
       <Projects />
+      <Intro />
     </>
     // <h1 className="text-9xl">
     //   Crafting digital experiences through code and creative design
