@@ -9,8 +9,8 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <Projects />
       <FAQs />
+      <Projects />
       <Intro />
     </>
     // <h1 className="text-9xl">
