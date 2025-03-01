@@ -170,8 +170,10 @@ const Hero: FC = () => {
                 scale: nameScale,
                 transformOrigin: "center",
               }}
-              initial={{ opacity: 0, y: "500%" }}
-              animate={{ opacity: 1, y: "400%" }}
+              // initial={{ opacity: 0, y: "500%" }}
+              // animate={{ opacity: 1, y: "400%" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{
                 duration: 0.5,
                 delay: 1,

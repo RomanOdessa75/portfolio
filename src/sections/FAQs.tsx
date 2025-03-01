@@ -33,14 +33,15 @@ const FAQs: FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   return (
-    <section className="section" id="faqs">
-      <div className="container">
+    <section className="section bg-[#b692a1]" id="faqs">
+      <div className="container px-0">
         <h2 className="text-4xl md:text-7xl lg:text-8xl">FAQs</h2>
         <div className="mt-10 md:mt-16 lg:mt-20">
           {faqs.map(({ question, answer }, faqIndex) => (
             <div
               key={question}
-              className="border-t border-stone-400 border-dotted py-6 md:py-8 lg:py-10 last:border-b relative isolate group/faq"
+              // className="border-t border-stone-400 border-dotted py-6 md:py-8 lg:py-10 last:border-b relative isolate group/faq"
+              className="border-t border-black py-6 md:py-8 lg:py-10 last:border-b relative isolate group/faq"
               onClick={() => {
                 if (faqIndex === selectedIndex) {
                   setSelectedIndex(null);
@@ -50,8 +51,12 @@ const FAQs: FC = () => {
               }}
             >
               <div
+                // className={twMerge(
+                //   "absolute h-0 w-full bottom-0 left-0 bg-stone-300 -z-10 group-hover/faq:h-full transition-all duration-700",
+                //   faqIndex === selectedIndex && "h-full"
+                // )}
                 className={twMerge(
-                  "absolute h-0 w-full bottom-0 left-0 bg-stone-300 -z-10 group-hover/faq:h-full transition-all duration-700",
+                  "absolute h-0 w-full bottom-0 left-0 bg-[#ae899a] -z-10 group-hover/faq:h-full transition-all duration-700",
                   faqIndex === selectedIndex && "h-full"
                 )}
               ></div>

@@ -46,7 +46,8 @@ export const arrowMotion = {
 export const itemContentMotion = {
   hover: {
     width: "5ch",
-    transition: { type: "spring", bounce: 0.5, duration: 0.5 },
+    // transition: { type: "spring", bounce: 0.5, duration: 0.5 },
+    transition: { type: "spring", duration: 0.5 },
   },
 };
 
