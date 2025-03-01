@@ -29,7 +29,8 @@ const ServicesItem: React.FC<ServicesItemProps> = ({ index, title }) => {
       >
         <div className="flex items-center relative w-full">
           <motion.div
-            className="absolute inset-0 bg-[#eee9e4]"
+            // className="absolute inset-0 bg-[#eee9e4]"
+            className="absolute inset-0 bg-[#b692a1]"
             variants={itemCoverMotion}
           />
           <motion.span

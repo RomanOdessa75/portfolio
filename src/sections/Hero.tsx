@@ -64,7 +64,7 @@ const Hero: FC = () => {
 
   return (
     <section>
-      <div className="grid md:grid-cols-12 md:h-screen items-stretch sticky top-0">
+      <div className="grid md:grid-cols-12 md:h-screen items-stretch sticky top-0 overflow-hidden">
         <div className="md:col-span-6 flex flex-col justify-center relative z-10">
           <div className="container !max-w-full">
             <motion.h1
@@ -161,7 +161,7 @@ const Hero: FC = () => {
               muted
             />
 
-            <motion.h2
+            {/* <motion.h2
               className="absolute text-5xl md:text-[70px] text-white font-thin"
               ref={nameRef}
               style={{
@@ -180,7 +180,7 @@ const Hero: FC = () => {
               }}
             >
               ROMAN RYABCHINSKIY
-            </motion.h2>
+            </motion.h2> */}
           </motion.div>
         </div>
       </div>

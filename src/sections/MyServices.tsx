@@ -53,7 +53,8 @@ const MyServices: FC = () => {
     <section className="section bg-[#b692a1]" id="faqs">
       <h2 className="text-4xl md:text-7xl lg:text-8xl lg:px-10">My Services</h2>
       <motion.div
-        className="inset-0 bg-[#eee9e4] flex flex-col justify-end p-8 mt-10 md:mt-16 lg:mt-20"
+        // className="inset-0 bg-[#eee9e4] flex flex-col justify-end p-8 mt-10 md:mt-16 lg:mt-20"
+        className="inset-0 bg-[#b692a1] flex flex-col justify-end p-8 mt-10 md:mt-16 lg:mt-20"
         initial={{ y: "-100%" }}
         animate={{
           y: 0,
@@ -68,7 +69,8 @@ const MyServices: FC = () => {
           animate="animate"
         />
         <motion.ul exit={{ opacity: 0, transition: { duration: 0 } }}>
-          {servicesItems.map((item, idx) => (
+          {/* {servicesItems.map((item, idx) => ( */}
+          {servicesItems.map(({ question, answer }, faqIndex) => (
             <ServicesItem key={idx} index={idx + 1} title={item} />
           ))}
         </motion.ul>
