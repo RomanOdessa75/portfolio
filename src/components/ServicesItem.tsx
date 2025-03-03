@@ -37,6 +37,9 @@ const ServicesItem: React.FC<ServicesItemProps> = ({ index, title }) => {
           <motion.div
             className="absolute inset-0 bg-[#c8a3b3]"
             variants={itemCoverMotionAlt}
+            // className="absolute inset-0 bg-[#eee9e4]"
+            className="absolute inset-0 bg-[#b692a1]"
+            variants={itemCoverMotion}
           />
           <motion.span
             className="w-[4ch] text-2xl sm:text-3xl md:text-4xl"
