@@ -33,7 +33,7 @@ const FAQs: FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   return (
-    <section className="section bg-[#bfccd8]" id="faqs">
+    <section className="section bg-[#b692a1]" id="faqs">
       <div className="container px-0">
         <h2 className="text-4xl md:text-7xl lg:text-8xl">FAQs</h2>
         <div className="mt-10 md:mt-16 lg:mt-20">
