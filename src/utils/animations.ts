@@ -64,3 +64,17 @@ export const itemCoverMotion = {
     },
   },
 };
+
+export const itemCoverMotionAlt = {
+  initial: {
+    height: "100%",
+  },
+  animate: {
+    height: 0,
+    transition: {
+      // delay: 1,
+      duration: 0.8,
+      ease: easings.easeInOutQuint,
+    },
+  },
+};
