@@ -10,12 +10,12 @@ import {
   useTransform,
 } from "framer-motion";
 import { dividerMotion } from "@/utils/animations";
+import AnimatedTitle from "@/components/AnimatedTitle";
 
 const Hero: FC = () => {
   const [titleScope, titleAnimate] = useAnimate();
   const scrollingDiv = useRef<HTMLDivElement>(null);
   const contentBlock = useRef<HTMLDivElement>(null);
-  const nameRef = useRef<HTMLHeadingElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: scrollingDiv,
@@ -39,10 +39,6 @@ const Hero: FC = () => {
     [0, 0.1, 1],
     ["#000", "#000", "#b692a1"]
   );
-
-  const nameX = useTransform(scrollYProgress, [0, 1], ["2%", "55%"]);
-  const nameY = useTransform(scrollYProgress, [0, 1], ["400%", "-250%"]);
-  const nameScale = useTransform(scrollYProgress, [0, 1], [1, 2]);
 
   useEffect(() => {
     new SplitType(titleScope.current, {
@@ -117,8 +113,7 @@ const Hero: FC = () => {
                     >
                       <a
                         href="#"
-                        className={`
-                        relative inline-block pb-1
+                        className={`relative inline-block pb-1
                         ${
                           index === 0
                             ? "text-left"
@@ -160,30 +155,13 @@ const Hero: FC = () => {
               loop
               muted
             />
-
-            {/* <motion.h2
-              className="absolute text-5xl md:text-[70px] text-white font-thin"
-              ref={nameRef}
-              style={{
-                x: nameX,
-                y: nameY,
-                scale: nameScale,
-                transformOrigin: "center",
-              }}
-              // initial={{ opacity: 0, y: "500%" }}
-              // animate={{ opacity: 1, y: "400%" }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                duration: 0.5,
-                delay: 1,
-              }}
-            >
-              ROMAN RYABCHINSKIY
-            </motion.h2> */}
+            <div>
+              <AnimatedTitle scrollYProgress={scrollYProgress} />
+            </div>
           </motion.div>
         </div>
       </div>
+
       <div className="md:h-[200vh] border-4" ref={scrollingDiv}></div>
     </section>
   );

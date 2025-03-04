@@ -1,6 +1,10 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { dividerMotion, itemContentMotion } from "@/utils/animations";
+import {
+  dividerMotion,
+  itemContentMotion,
+  itemCoverMotionAlt,
+} from "@/utils/animations";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
@@ -48,6 +52,10 @@ const ServicesItem: React.FC<ServicesItemProps> = ({
         ></div>
 
         <div className="flex items-center relative w-full">
+          <motion.div
+            className="absolute inset-0 bg-[#c8a3b3]"
+            variants={itemCoverMotionAlt}
+          />
           <motion.span
             className="w-[4ch] text-2xl sm:text-3xl md:text-4xl"
             variants={itemContentMotion}

@@ -72,7 +72,7 @@ export const itemCoverMotionAlt = {
   animate: {
     height: 0,
     transition: {
-      // delay: 1,
+      delay: 0.2,
       duration: 0.8,
       ease: easings.easeInOutQuint,
     },
