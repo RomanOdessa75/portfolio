@@ -1,4 +1,4 @@
-import FAQs from "@/sections/FAQs";
+// import FAQs from "@/sections/FAQs";
 import Header from "@/sections/Header";
 import Hero from "@/sections/Hero";
 import Intro from "@/sections/Intro";
@@ -11,12 +11,9 @@ export default function Home() {
       <Header />
       <Hero />
       <MyServices />
-      <FAQs />
+      {/* <FAQs /> */}
       <Projects />
       <Intro />
     </>
-    // <h1 className="text-9xl">
-    //   Crafting digital experiences through code and creative design
-    // </h1>
   );
 }

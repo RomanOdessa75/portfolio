@@ -20,7 +20,7 @@ const AnimatedTitle: FC<AnimatedTitleProps> = ({ scrollYProgress }) => {
       height="107.000000pt"
       viewBox="0 0 623.000000 107.000000"
       preserveAspectRatio="xMidYMid meet"
-      className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-10"
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 mb-10 w-[90%] max-w-[623px] h-auto"
       style={{
         x: xPosition,
         scale: scale,

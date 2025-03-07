@@ -143,7 +143,7 @@ const Hero: FC = () => {
 
         <div className="md:col-span-6 relative">
           <motion.div
-            className="mt-20 md:mt-0 md:size-full md:absolute md:right-0 max-md:!w-full bg-[#b692a1]"
+            className="mt-20 md:mt-0 md:size-full md:absolute md:right-0 max-md:!w-full bg-[#b692a1] "
             style={{
               width: portraitWidth,
             }}
@@ -155,7 +155,7 @@ const Hero: FC = () => {
               loop
               muted
             />
-            <div>
+            <div className="container w-[100%] overflow-hidden px-4">
               <AnimatedTitle scrollYProgress={scrollYProgress} />
             </div>
           </motion.div>
