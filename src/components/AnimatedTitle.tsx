@@ -3,14 +3,15 @@ import { FC } from "react";
 
 interface AnimatedTitleProps {
   scrollYProgress: any;
+  animatedTitleY: any;
 }
 
-const AnimatedTitle: FC<AnimatedTitleProps> = ({ scrollYProgress }) => {
+const AnimatedTitle: FC<AnimatedTitleProps> = ({
+  scrollYProgress,
+  animatedTitleY,
+}) => {
   const xPosition = useTransform(scrollYProgress, [0, 0.5], ["-50%", "-50%"]);
-
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.5]);
-
-  const yPosition = useTransform(scrollYProgress, [0, 0.5], ["0%", "0%"]);
 
   return (
     <motion.svg
@@ -24,7 +25,7 @@ const AnimatedTitle: FC<AnimatedTitleProps> = ({ scrollYProgress }) => {
       style={{
         x: xPosition,
         scale: scale,
-        y: yPosition,
+        y: animatedTitleY,
         color: "white",
       }}
     >
