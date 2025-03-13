@@ -1,7 +1,18 @@
-import { FC } from "react";
+import React from "react";
 
-const Footer: FC = () => {
-  return <div>Footer</div>;
-};
+import FooterContent from "@/components/FooterContent";
 
-export default Footer;
+export default function Footer() {
+  return (
+    <div
+      // className="relative h-[600px] mt-44"
+      className="relative h-[100vh] mt-44"
+      style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+    >
+      {/* <div className="fixed h-[600px] w-full bottom-0"> */}
+      <div className="fixed h-[100vh] w-full bottom-0">
+        <FooterContent />
+      </div>
+    </div>
+  );
+}

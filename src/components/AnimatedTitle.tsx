@@ -5,6 +5,10 @@ interface AnimatedTitleProps {
   scrollYProgress: any;
   animatedTitleY: any;
 }
+// interface AnimatedTitleProps {
+//   scrollYProgress?: any; // Теперь необязательный
+//   animatedTitleY?: any; // Теперь необязательный
+// }
 
 const AnimatedTitle: FC<AnimatedTitleProps> = ({
   scrollYProgress,

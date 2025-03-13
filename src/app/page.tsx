@@ -9,6 +9,7 @@ import Hero from "@/sections/Hero";
 import Intro from "@/sections/Intro";
 import Projects from "@/sections/Projects";
 import MyServices from "@/sections/MyServices";
+import Footer from "@/sections/Footer";
 
 export default function Home() {
   useEffect(() => {
@@ -28,7 +29,8 @@ export default function Home() {
       <MyServices />
       {/* <FAQs /> */}
       <Projects />
-      <Intro />
+      {/* <Intro /> */}
+      <Footer />
     </>
   );
 }
