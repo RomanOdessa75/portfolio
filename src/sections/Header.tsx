@@ -11,9 +11,7 @@ const navItems = [
   { label: "Selected Works", href: "#projects", color: "#798e7b" },
   { label: "Testimonials", href: "#testimonials", color: "#b692a1" },
   { label: "FAQs", href: "#faqs", color: "#bfccd8" },
-  // { label: "FAQs", href: "#faqs", color: "rgb(191, 204, 216)" },
   { label: "Contact", href: "#contact", color: "#025380" },
-  // { label: "Contact", href: "#contact", color: "#f3c562" },
 ];
 
 const Header: FC = () => {
@@ -163,7 +161,7 @@ const Header: FC = () => {
                     ref={scope}
                   >
                     <span className="text-sm">Menu</span>
-                    {/* <div className="size-10 border border-stone-400 rounded-full inline-flex items-center justify-center bg-[#e49366]"> */}
+
                     <div className="size-10 rounded-full inline-flex items-center justify-center bg-[#e49366]">
                       <svg
                         width="24"

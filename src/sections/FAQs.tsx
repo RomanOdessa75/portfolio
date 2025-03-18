@@ -40,7 +40,6 @@ const FAQs: FC = () => {
           {faqs.map(({ question, answer }, faqIndex) => (
             <div
               key={question}
-              // className="border-t border-stone-400 border-dotted py-6 md:py-8 lg:py-10 last:border-b relative isolate group/faq"
               className="border-t border-black py-6 md:py-8 lg:py-10 last:border-b relative isolate group/faq"
               onClick={() => {
                 if (faqIndex === selectedIndex) {
