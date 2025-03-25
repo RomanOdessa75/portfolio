@@ -10,8 +10,10 @@ import Hero from "@/sections/Hero";
 import Projects from "@/sections/Projects";
 import MyServices from "@/sections/MyServices";
 import Footer from "@/sections/Footer";
+import Services from "@/sections/Services";
+// import Services from "@/sections/projects/index";
 
-export default function Home() {
+export default function RootPage() {
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time: any) {
@@ -26,7 +28,8 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <MyServices />
+      {/* <MyServices /> */}
+      <Services />
       {/* <FAQs /> */}
       <Projects />
       {/* <Intro /> */}
