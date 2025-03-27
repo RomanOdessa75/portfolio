@@ -1,77 +1,55 @@
-"use client";
+'use client';
 
-import React, { FC, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { easings } from "@/utils/animations";
-import ServicesItem from "@/components/ServicesItem";
-import { dividerMotion } from "@/utils/animations";
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import ServicesTitles from '@/components/ServicesTitles';
 
-const MyServices: FC = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+const servicesData = [
+  {
+    title: "Web Development",
+    description: "Building responsive and performant websites tailored to your needs.",
+    speed: 0.5,
+  },
+  {
+    title: "UI/UX Design",
+    description: "Crafting intuitive and visually appealing user interfaces.",
+    speed: 0.5,
+  },
+  {
+    title: "Consulting",
+    description: "Providing expert advice to optimize your digital projects.",
+    speed: 0.67,
+  },
+  {
+    title: "Maintenance",
+    description: "Ensuring your website runs smoothly with ongoing support.",
+    speed: 0.8,
+  },
+];
+
+const MyServices = () => {
+  const [selectedService, setSelectedService] = useState<number | null>(null);
+  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
 
   const { scrollYProgress } = useScroll();
-
   const servicesY = useTransform(scrollYProgress, [0, 1], ["20%", "-50%"]);
-
-  const faqs = [
-    {
-      question: "How long does it take to build a website?",
-      answer:
-        "It depends on the complexity of the website and the scope of the project.",
-    },
-    {
-      question: "What is your development process like?",
-      answer:
-        "I follow a hands-on approach starting with project planning, building out the core features, and regular check-ins to make sure everything matches your needs.",
-    },
-    {
-      question: "Do you work with international clients?",
-      answer:
-        "Yes, I work with clients globally and can accommodate different time zones for meetings and communication.",
-    },
-    {
-      question: "What industries do you specialize in?",
-      answer:
-        "I have experience across various industries including technology, retail, hospitality, and professional services, bringing fresh perspectives to each project.",
-    },
-  ];
 
   return (
     <motion.section
-      className="section bg-[#c8a3b3]"
+      className="relative w-full min-h-screen bg-[#c8a3b3] py-20"
       id="services"
       style={{ y: servicesY }}
     >
-      <h2 className="text-4xl md:text-7xl lg:text-8xl lg:px-10">My Services</h2>
-      <motion.div
-        className="inset-0 bg-[#c8a3b3] flex flex-col justify-end p-8 mt-10 md:mt-16 lg:mt-20"
-        initial={{ y: "100%" }}
-        animate={{
-          y: 0,
-          transition: { duration: 1, ease: easings.easeOutQuart },
-        }}
-        exit={{ y: "100%", transition: { duration: 0.3 } }}
-      >
-        <motion.div
-          className="bottom-0 h-[1px] bg-black w-full origin-left"
-          variants={dividerMotion}
-          initial="initial"
-          animate="animate"
+      <h2 className="text-4xl md:text-7xl lg:text-8xl lg:px-10 py-10 md:py-16 lg:py-24">My Services</h2>
+      <div className="relative">
+        <ServicesTitles
+          data={servicesData}
+          selectedService={selectedService} 
+          setSelectedService={setSelectedService}
+          openAccordion={openAccordion}
+          setOpenAccordion={setOpenAccordion}
         />
-        <motion.ul exit={{ opacity: 0, transition: { duration: 0 } }}>
-          {faqs.map(({ question, answer }, faqIndex) => (
-            <ServicesItem
-              key={faqIndex}
-              index={faqIndex + 1}
-              title={question}
-              answer={answer}
-              faqIndex={faqIndex}
-              selectedIndex={selectedIndex}
-              setSelectedIndex={setSelectedIndex}
-            />
-          ))}
-        </motion.ul>
-      </motion.div>
+      </div>
     </motion.section>
   );
 };
