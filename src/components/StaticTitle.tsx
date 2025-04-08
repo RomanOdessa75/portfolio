@@ -1,10 +1,11 @@
-import { motion, useTransform } from "framer-motion";
+import { motion, useTransform, MotionValue } from "framer-motion";
 import { FC } from "react";
 
 interface AnimatedTitleProps {
-  scrollYProgress: any;
-  animatedTitleY: any;
+  scrollYProgress: MotionValue<number>;
+  animatedTitleY: MotionValue<string>;
 }
+
 const StaticTitle: FC<AnimatedTitleProps> = ({
   scrollYProgress,
   animatedTitleY,

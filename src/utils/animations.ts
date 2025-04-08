@@ -1,5 +1,3 @@
-import { animate } from "framer-motion";
-
 export const easings = {
   easeOutQuart: [0.25, 1, 0.5, 1],
   easeInOutQuint: [0.83, 0, 0.17, 1],
@@ -46,7 +44,6 @@ export const arrowMotion = {
 export const itemContentMotion = {
   hover: {
     width: "5ch",
-    // transition: { type: "spring", bounce: 0.5, duration: 0.5 },
     transition: { type: "spring", duration: 0.5 },
   },
 };

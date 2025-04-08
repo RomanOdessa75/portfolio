@@ -7,7 +7,7 @@ interface NavMenuProps {
   onClose: () => void;
 }
 
-const NavMenu: React.FC<NavMenuProps> = ({ onClose }) => {
+const NavMenu: React.FC<NavMenuProps> = () => {
   const navItems = [
     "Services",
     "Our Work",
@@ -16,7 +16,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ onClose }) => {
     "Get In Touch",
   ];
 
-  // Блокируем скролл при открытии меню
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {

@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import InputField from "./InputField";
 
 const ContactForm = () => {
-  const [ref, inView] = useInView({ triggerOnce: true });
+  const [ref] = useInView({ triggerOnce: true });
   return (
     <div className="w-full md:w-1/2">
       <motion.form ref={ref} className="flex flex-col gap-4">
