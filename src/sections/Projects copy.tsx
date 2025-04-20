@@ -33,7 +33,7 @@ const projects = [
 
 const Projects: FC = () => {
   return (
-    <section className="" id="projects">
+    <section className="" id="projects" style={{ backgroundColor: "#bfccd8" }}>
       <div className="container">
         <h2 className="text-4xl md:text-7xl lg:text-8xl">Selected works</h2>
         <div className="mt-10 md:mt-16 lg:mt-20">
@@ -43,7 +43,8 @@ const Projects: FC = () => {
               key={name}
               className="border-t last:border-b border-stone-400 border-dotted py-6 md:py-8 lg:py-10 flex flex-col relative group/project"
             >
-              <div className="absolute bottom-0 left-0 w-full h-0 group-hover/project:h-full transition-all duration-700 bg-stone-300"></div>
+              {/* <div className="absolute bottom-0 left-0 w-full h-0 group-hover/project:h-full transition-all duration-700 bg-stone-300"></div> */}
+              <div className="absolute bottom-0 left-0 w-full h-0 group-hover/project:h-full transition-all duration-700 bg-slate-400"></div>
               <div className="relative">
                 <div className="aspect-video md:hidden">
                   <Image

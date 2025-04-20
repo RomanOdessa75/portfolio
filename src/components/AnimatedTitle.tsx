@@ -11,6 +11,7 @@ const AnimatedTitle: FC<AnimatedTitleProps> = ({
   animatedTitleY,
 }) => {
   const xPosition = useTransform(scrollYProgress, [0, 0.5], ["-50%", "-50%"]);
+  // const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.5]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.5]);
 
   return (

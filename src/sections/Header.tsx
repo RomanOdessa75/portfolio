@@ -6,12 +6,18 @@ import Link from "next/link";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import NavMenu from "@/components/NavMenu";
 
+// const navItems = [
+//   { label: "About", href: "#intro", color: "#e49366" },
+//   { label: "Selected Works", href: "#projects", color: "#798e7b" },
+//   { label: "Testimonials", href: "#testimonials", color: "#b692a1" },
+//   { label: "FAQs", href: "#faqs", color: "#bfccd8" },
+//   { label: "Contact", href: "#contact", color: "#025380" },
+// ];
 const navItems = [
   { label: "About", href: "#intro", color: "#e49366" },
-  { label: "Selected Works", href: "#projects", color: "#798e7b" },
-  { label: "Testimonials", href: "#testimonials", color: "#b692a1" },
-  { label: "FAQs", href: "#faqs", color: "#bfccd8" },
-  { label: "Contact", href: "#contact", color: "#025380" },
+  { label: "Projects", href: "#projects", color: "#798e7b" },
+  { label: "Blog", href: "#testimonials", color: "#b692a1" },
+  { label: "Contact", href: "#faqs", color: "#bfccd8" },
 ];
 
 const Header: FC = () => {
@@ -114,6 +120,7 @@ const Header: FC = () => {
             variant="text"
             className="w-full md:inline-flex !no-underline hover:!no-underline"
           >
+            {/* <span className="text-base text-black capitalize transition-all no-underline"> */}
             <span className="text-base text-black capitalize transition-all no-underline">
               {label}
             </span>
@@ -125,14 +132,13 @@ const Header: FC = () => {
 
   return (
     <header>
-      <div
-        ref={navRef}
-        className="absolute top-0 left-0 w-full z-10"
-      >
-        <div className="container !max-w-full">
-          <div className="flex justify-between h-20 items-center">
-            <div>
-              <ul className="flex items-center max-lg:hidden">{items}</ul>
+      <div ref={navRef} className="absolute top-0 left-0 w-full z-10">
+        <div>
+          <div className="flex justify-between h-20 items-center w-1/2">
+            <div className="w-full">
+              <ul className="container !max-w-full flex justify-between items-center max-lg:hidden">
+                {items}
+              </ul>
             </div>
           </div>
         </div>

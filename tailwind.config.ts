@@ -29,6 +29,21 @@ const config: Config = {
           500: 'color-mix(in srgb, theme("colors.red.500") 50%, theme("colors.orange.500") 50%)',
         },
       },
+
+      transitionProperty: {
+        width: "width",
+        transform: "transform",
+        padding: "padding",
+      },
+      // animation: {
+      //   marquee: "marquee 40s linear infinite",
+      // },
+      // keyframes: {
+      //   marquee: {
+      //     "0%": { transform: "translateX(0)" },
+      //     "100%": { transform: "translateX(-50%)" },
+      //   },
+      // },
     },
   },
   plugins: [],

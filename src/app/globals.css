@@ -21,3 +21,38 @@
 .clip-inset-50 {
   clip-path: inset(50% 0 50% 0);
 }
+
+/* Добавляем анимацию для бегущей строки */
+@layer utilities {
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    /* Теперь ВСЕГДА двигаем на 50%, т.к. контент удвоен */
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    /* Уменьшаем время для УВЕЛИЧЕНИЯ скорости. Подберите значение. */
+    /* Например, 30 секунд вместо 50 */
+    /* animation: marquee 30s linear infinite; */
+    animation: marquee 50s linear infinite;
+    display: inline-flex; /* Явно указываем inline-flex для корректного расчета ширины */
+    /* width: max-content; */ /* Можно раскомментировать, если inline-flex не сработает идеально */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Опционально: остановка анимации для пользователей с настройками доступности */
+/* @media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+} */
