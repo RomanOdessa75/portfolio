@@ -34,24 +34,20 @@ const Preloader = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: "easeInOut" }}
         >
-          <div className="w-[80vw] h-[50vh] flex justify-center items-center gap-[1.2rem] perspective-[1200px]">
+          <div className="flex gap-[1rem] perspective-[1000px]">
             {letters.map((char, index) => {
               const isEven = index % 2 === 0;
-              const yOffset = alignText ? "0px" : isEven ? "-25px" : "25px";
+              const yOffset = alignText ? "0px" : isEven ? "-20px" : "20px";
 
               return (
                 <motion.div
                   key={index}
-                  className="flex items-center justify-center"
-                  style={{
-                    width: "auto",
-                    height: "100%",
-                  }}
+                  className="w-12 md:w-16 h-28 md:h-32 flex items-center justify-center"
                   animate={{ y: yOffset }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                 >
                   <motion.div
-                    className="h-full flex items-center justify-center"
+                    className="w-full h-full flex items-center justify-center"
                     style={{
                       rotateY: startFlip ? "0deg" : "90deg",
                       transition: "transform 1s ease-in-out",
@@ -59,13 +55,7 @@ const Preloader = () => {
                       backfaceVisibility: "hidden",
                     }}
                   >
-                    <span
-                      className="text-white font-extrabold"
-                      style={{
-                        fontSize: "clamp(3rem, 8vw, 10rem)",
-                        lineHeight: 1,
-                      }}
-                    >
+                    <span className="text-6xl md:text-8xl font-extrabold text-white block">
                       {char}
                     </span>
                   </motion.div>

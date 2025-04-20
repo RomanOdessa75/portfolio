@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Lenis from "lenis";
 import Header from "@/sections/Header";
 import Hero from "@/sections/Hero";
