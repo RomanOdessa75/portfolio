@@ -8,7 +8,6 @@ const TitleWithDivider = () => {
 
   return (
     <div className="mt-5">
-      {/* <div className="mt-auto"> */}
       <h1 className="text-4xl text-white md:text-7xl lg:text-8xl">
         Contact Me
       </h1>

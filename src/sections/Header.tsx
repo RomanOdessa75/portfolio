@@ -6,13 +6,6 @@ import Link from "next/link";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import NavMenu from "@/components/NavMenu";
 
-// const navItems = [
-//   { label: "About", href: "#intro", color: "#e49366" },
-//   { label: "Selected Works", href: "#projects", color: "#798e7b" },
-//   { label: "Testimonials", href: "#testimonials", color: "#b692a1" },
-//   { label: "FAQs", href: "#faqs", color: "#bfccd8" },
-//   { label: "Contact", href: "#contact", color: "#025380" },
-// ];
 const navItems = [
   { label: "About", href: "#intro", color: "#e49366" },
   { label: "Projects", href: "#projects", color: "#798e7b" },
@@ -120,7 +113,6 @@ const Header: FC = () => {
             variant="text"
             className="w-full md:inline-flex !no-underline hover:!no-underline"
           >
-            {/* <span className="text-base text-black capitalize transition-all no-underline"> */}
             <span className="text-base text-black capitalize transition-all no-underline">
               {label}
             </span>
