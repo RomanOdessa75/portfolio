@@ -54,7 +54,7 @@ const SmCard = ({ project, color, className }: SmCardProps) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const relativeY = e.clientY - rect.top;
-    const isTop = relativeY < rect.height / 2;
+    // const isTop = relativeY < rect.height / 2;
 
     // setExitFromTop(isTop);
     setIsHovered(false);

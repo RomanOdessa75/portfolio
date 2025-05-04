@@ -2,8 +2,8 @@
 
 import { Project } from "@/data/projectsData";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import LgSmallCard from "@/app/projects/components/lgSmallCard";
-import SmCard from "@/app/projects/components/smCard";
+import LgSmallCard from "@/app/projects/components/LgSmallCard";
+import SmCard from "@/app/projects/components/SmCard";
 
 interface SmallProjectCardProps {
   project: Project;

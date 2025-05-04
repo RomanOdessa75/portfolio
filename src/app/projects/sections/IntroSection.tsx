@@ -264,7 +264,7 @@ const IntroSection = () => {
         <ul
           className={`hidden md:flex flex-nowrap justify-between items-center gap-4  overflow-x-auto ${isLessThan1350 ? "px-2" : "px-20"}`}
         >
-          {navItemsRendered.map(({ desktopItem }, index) => desktopItem)}
+          {navItemsRendered.map(({ desktopItem }) => desktopItem)}
         </ul>
       </div>
     </section>
