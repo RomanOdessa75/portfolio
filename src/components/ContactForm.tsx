@@ -149,7 +149,7 @@ const ContactForm = () => {
 
         <div className="mt-8">
           <Button
-            variant="white"
+            variant="submit"
             iconAfter={
               <div className="overflow-hidden size-10">
                 <div className="h-10 w-20 flex group-hover/button:-translate-x-1/2 transition-transform duration-500">

@@ -16,6 +16,8 @@ import image4 from "@/assets/works-slider/4.avif";
 import image5 from "@/assets/works-slider/5.avif";
 import image6 from "@/assets/works-slider/6.avif";
 import Image from "next/image";
+import Link from "next/link";
+import Button from "@/components/Button";
 
 const projects = [
   {
@@ -51,6 +53,56 @@ const creativityText = [
   "always striving to chart new territories in my work.",
 ];
 
+const overlayVariants = {
+  hidden: {
+    opacity: 0,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
+const topTextVariants = {
+  hidden: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
+const bottomTextVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
+const buttonVariants = {
+  hidden: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
 const SelectedWorks: FC = () => {
   const imagesRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -58,6 +110,7 @@ const SelectedWorks: FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const creativeRef = useRef<HTMLDivElement>(null);
   const projectListRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
 
   const [, titleAnimate] = useAnimate();
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
@@ -72,13 +125,14 @@ const SelectedWorks: FC = () => {
   const clip = useMotionTemplate`inset(0 0 0 ${clipProgress}%)`;
 
   useEffect(() => {
-    if (isInView && titleRef.current) {
+    if (isInView && titleRef.current && buttonRef.current) {
       const split = new SplitType(titleRef.current, {
         types: "lines,words",
         tagName: "span",
       });
 
       titleRef.current.classList.remove("invisible");
+      buttonRef.current.classList.remove("invisible");
 
       titleRef.current.querySelectorAll(".word").forEach((word) => {
         const el = word as HTMLElement;
@@ -87,7 +141,7 @@ const SelectedWorks: FC = () => {
       });
 
       titleAnimate(
-        titleRef.current.querySelectorAll(".word"),
+        [...titleRef.current.querySelectorAll(".word"), buttonRef.current],
         {
           transform: "translateY(0)",
           opacity: 1,
@@ -213,7 +267,11 @@ const SelectedWorks: FC = () => {
             className="flex flex-col transition-transform duration-300 ease-out"
           >
             {projects.map(({ name, image }, index) => (
-              <div key={index} className="w-full h-[33.33vh]">
+              <Link
+                key={index}
+                href="/"
+                className="w-full h-[33.33vh] relative block"
+              >
                 <Image
                   src={image}
                   alt={`${name} image`}
@@ -221,26 +279,110 @@ const SelectedWorks: FC = () => {
                   sizes="50vw"
                   priority={index < 3}
                 />
-              </div>
+                <motion.div
+                  className="absolute inset-0 bg-black/40 flex flex-col justify-between p-4"
+                  initial="hidden"
+                  whileHover="visible"
+                  variants={overlayVariants}
+                >
+                  <div className="flex justify-between">
+                    <motion.h4
+                      className="text-white text-lg"
+                      variants={topTextVariants}
+                    >
+                      e-commerce
+                    </motion.h4>
+                    <motion.div
+                      className="text-white text-sm border border-white rounded-full px-3 py-1"
+                      variants={topTextVariants}
+                    >
+                      2025
+                    </motion.div>
+                  </div>
+                  <div className="flex justify-between items-end">
+                    <motion.h3
+                      className="text-white text-4xl"
+                      variants={bottomTextVariants}
+                    >
+                      Best Present
+                    </motion.h3>
+                    <motion.div variants={bottomTextVariants}>
+                      <Button variant="white" />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
 
         {/* Right Side: Project List */}
         <div className="w-3/5 h-screen flex flex-col justify-between py-16 px-10">
-          <motion.h2
-            ref={titleRef}
-            className="invisible text-6xl md:text-7xl lg:text-9xl text-left"
-          >
-            Projects
-          </motion.h2>
+          <div className="flex justify-between items-baseline">
+            <motion.h2
+              ref={titleRef}
+              className="invisible text-6xl md:text-7xl lg:text-9xl text-left"
+            >
+              Projects
+            </motion.h2>
+            <motion.div
+              ref={buttonRef}
+              className="invisible flex items-center"
+              variants={buttonVariants}
+            >
+              <Button
+                variant="text"
+                className="text-lg transition-all duration-300 ease-in-out group/button"
+                iconAfter={
+                  <div className="overflow-hidden size-7">
+                    <div className="h-6 w-20 flex group-hover/button:-translate-x-1/2 transition-transform duration-500">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="100%"
+                        height="100%"
+                        viewBox="0 0 13 16"
+                        fill="none"
+                        preserveAspectRatio="xMidYMid meet"
+                        aria-hidden="true"
+                        role="img"
+                      >
+                        <path
+                          d="M0.545457 9.56589L0.545478 8.34759L8.89964 8.3476L5.15766 4.60563L6.02788 3.7354L11.2492 8.95675L6.0279 14.1781L5.15769 13.3079L8.89964 9.56593L0.545457 9.56589Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="100%"
+                        height="100%"
+                        viewBox="0 0 13 16"
+                        fill="none"
+                        preserveAspectRatio="xMidYMid meet"
+                        aria-hidden="true"
+                        role="img"
+                      >
+                        <path
+                          d="M0.545457 9.56589L0.545478 8.34759L8.89964 8.3476L5.15766 4.60563L6.02788 3.7354L11.2492 8.95675L6.0279 14.1781L5.15769 13.3079L8.89964 9.56593L0.545457 9.56589Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                }
+              >
+                <span className="font-extralight transition-all duration-300 group-hover/button:font-normal">
+                  View other projects
+                </span>
+              </Button>
+            </motion.div>
+          </div>
 
           <motion.div
             ref={projectListRef}
             style={{ clipPath: clip }}
-            className="w-1/2 ml-auto"
+            className="w-3/5 ml-auto"
           >
-            {projects.map(({ name }) => (
+            {projects.map(({ name }, index) => (
               <a
                 href="#"
                 key={name}
@@ -248,9 +390,14 @@ const SelectedWorks: FC = () => {
               >
                 <div className="absolute bottom-0 left-0 w-full h-0 group-hover/project:h-full transition-all duration-700 bg-slate-400 z-0"></div>
                 <div className="relative z-10 flex justify-between items-center">
-                  <h3 className="text-xl md:text-2xl group-hover/project:pl-4 transition-all duration-700">
-                    {name}
-                  </h3>
+                  <div className="flex items-center gap-20">
+                    <span className="text-xl md:text-xl">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-xl md:text-2xl group-hover/project:pl-4 transition-all duration-700">
+                      {name}
+                    </h3>
+                  </div>
                   <div className="size-6 overflow-hidden group-hover/project:pr-4 transition-all duration-700">
                     <div className="h-6 w-12 flex group-hover/project:-translate-x-1/2 transition-transform duration-300">
                       <svg

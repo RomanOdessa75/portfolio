@@ -8,13 +8,20 @@ const config: Config = {
   ],
   theme: {
     screens: {
+      xs: "320px",
       sm: "375px",
+      xsml: "460px",
+      sml: "640px",
       md: "768px",
+      mdl: "1024px",
       lg: "1200px",
+      xl: "1440px",
+      xxl: "1600px",
     },
     extend: {
       fontFamily: {
         sans: "var(--font-archivo)",
+        exorts: ['"Exorts Compressed"', "sans-serif"],
       },
       container: {
         center: true,

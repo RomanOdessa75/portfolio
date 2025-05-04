@@ -7,6 +7,7 @@ import {
   useTransform,
   useMotionTemplate,
 } from "framer-motion";
+import BtnLink from "./BtnLink";
 
 interface Service {
   title: string;
@@ -143,12 +144,45 @@ const ServiceTitle: FC<ServiceTitleProps> = ({
           <div className="w-1/3">
             <div className="w-full pb-[75%] bg-gray-300" />
           </div>
-          <div className="w-2/3 pl-4">
-            <p className="text-[#010101] text-[1vw] font-bold">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam.
-            </p>
+          <div className="w-2/3 pl-6 py-4 flex flex-col justify-between gap-4">
+            <div className="flex gap-4">
+              <div className="flex-1 flex gap-2">
+                <div className="w-[15%] text-[#010101] text-[1vw] font-normal">
+                  01
+                </div>
+                <p className="w-[85%] text-[#010101] text-[1vw]">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt. Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                </p>
+              </div>
+              <div className="flex-1 flex gap-2">
+                <div className="w-[15%] text-[#010101] text-[1vw] font-normal">
+                  02
+                </div>
+                <p className="w-[85%] text-[#010101] text-[1vw]">
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip. Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                </p>
+              </div>
+            </div>
+            <div className="w-full h-[2px] bg-[#010101]/20" />
+            <div className="flex flex-col">
+              <p className="text-[#010101] text-[1vw] font-normal">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor
+                sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam.
+              </p>
+              <div className="flex flex-row self-end mt-4">
+                <BtnLink text="View details" />
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>

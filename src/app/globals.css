@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Exorts Compressed";
+  src:
+    url("/fonts/exorts-compressed/chesterfield.woff2") format("woff2"),
+    url("/fonts/exorts-compressed/chesterfield.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 .section {
   @apply py-24 md:py-32 lg:py-40;
 }
@@ -41,5 +51,12 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
     animation: none;
+  }
+}
+
+/* ------ under construction ------ */
+@layer utilities {
+  .clip-path-polygon {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
   }
 }

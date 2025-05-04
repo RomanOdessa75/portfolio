@@ -44,6 +44,8 @@ export const services = pgTable("services", {
   sub_title: text("sub_title"),
   servicesImage: text("services_image"),
   serviceDescription: text("service_description"),
+  service01p: text("service_paragraph01"),
+  service02p: text("service_paragraph02"),
   includesList: text("includes_list"),
   backgroundColor: text("background_color"),
 });
@@ -61,12 +63,14 @@ export const works = pgTable("works", {
   image: varchar("image", { length: 255 }), // путь к обложке проекта
   alt: varchar("alt", { length: 255 }),
   createdAt: timestamp("created_at").default(sql`NOW()`),
+  lockedYN: integer("locked_YN").notNull().default(0),
   backgroundColor: text("background_color"),
 });
 // Страница проектов (портфолио)
 export const projects = pgTable("projects", {
   id: serial("id").primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
+  subtitle: varchar("subtitle", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
   type: text("project_type").notNull(),
   description: text("description").notNull(),
@@ -75,6 +79,8 @@ export const projects = pgTable("projects", {
   image: varchar("image", { length: 255 }), // путь к обложке проекта
   alt: varchar("alt", { length: 255 }),
   createdAt: timestamp("created_at").default(sql`NOW()`),
+  lockedYN: integer("locked_YN").notNull().default(0),
+  priority: integer("priority").notNull().default(1),
   backgroundColor: text("background_color"),
 });
 
@@ -86,6 +92,7 @@ export const projectImages = pgTable("project_images", {
   imageUrl: varchar("image_url", { length: 255 }).notNull(),
   alt: varchar("alt", { length: 255 }), // если нужно описание изображения
   order: integer("order"), // если хочешь задать порядок отображения
+  lockedYN: integer("locked_YN").notNull().default(0),
 });
 
 export const users = pgTable("users", {
@@ -101,6 +108,7 @@ export const users = pgTable("users", {
   //   createdAt: timestamp("created_at").default(sql`NOW()`),
   notes: text("notes"),
   active: boolean("active").notNull().default(true),
+  lockedYN: integer("locked_YN").notNull().default(0),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at")
     .notNull()
@@ -143,6 +151,7 @@ export const posts = pgTable("posts", {
   updatedAt: timestamp("updated_at").default(sql`NOW()`),
   views: integer("views").default(0), // Track the total number of views
   likes: integer("likes").default(0), // Track the total number of likes
+  lockedYN: integer("locked_YN").notNull().default(0),
 });
 
 // Связь многие ко многим (посты <-> теги)
@@ -174,6 +183,7 @@ export const comments = pgTable("comments", {
     withTimezone: true,
   }).defaultNow(),
   updatedAt: timestamp("updated_at").default(sql`NOW()`),
+  lockedYN: integer("locked_YN").notNull().default(0),
 });
 
 export const guests = pgTable("guests", {
@@ -189,4 +199,5 @@ export const guests = pgTable("guests", {
     .notNull()
     .defaultNow()
     .$onUpdate(() => new Date()),
+  lockedYN: integer("locked_YN").notNull().default(0),
 });

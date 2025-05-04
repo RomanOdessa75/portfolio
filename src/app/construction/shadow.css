@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .clip-path-polygon {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  }
+  .custom-shadow-right {
+    box-shadow:
+      24px 0 48px -12px rgba(0, 0, 0, 0.25),
+      8px 0 24px -8px rgba(0, 0, 0, 0.18);
+  }
+
+  .custom-diagonal-shadow {
+    position: relative;
+  }
+
+  .left-wrap {
+    filter: drop-shadow(16px 0 16px rgba(0, 0, 0, 0.55))
+      drop-shadow(2px 0 4px rgba(0, 0, 0, 0.32));
+  }
+
+  .left {
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+    background: #111; /* или ваш фон */
+    height: 100vh;
+  }
+
+  @media (max-width: 768px) {
+    .left {
+      clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
+      height: 50vh;
+    }
+  }
+}

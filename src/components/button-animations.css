@@ -1,0 +1,82 @@
+/* Base styles for background fill */
+.bg-fill {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+  transition: none;
+}
+
+/* Button Primary Styles */
+.btn-primary {
+  position: relative;
+}
+
+.btn-primary:hover .bg-fill {
+  animation: fillUpAnimation 0.5s forwards;
+}
+
+.btn-primary:not(:hover) .bg-fill {
+  animation: drainUpAnimation 0.5s forwards;
+}
+
+.btn-primary:hover .text-content {
+  color: white;
+}
+
+.btn-primary:hover .circle-expand {
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+}
+
+.btn-primary:hover .arrow-appear {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* Button Secondary Styles */
+.btn-secondary {
+  position: relative;
+}
+
+.btn-secondary:hover .bg-fill {
+  animation: fillUpAnimation 0.5s forwards;
+}
+
+.btn-secondary:not(:hover) .bg-fill {
+  animation: drainUpAnimation 0.5s forwards;
+}
+
+.btn-secondary:hover .text-content {
+  color: black;
+}
+
+.btn-secondary:hover .circle-expand {
+  width: 3rem;
+  height: 3rem;
+  background-color: black;
+}
+
+.btn-secondary:hover .arrow-appear {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* Keyframe Animations */
+@keyframes fillUpAnimation {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes drainUpAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}

@@ -40,7 +40,6 @@ const Hero: FC = () => {
     ["#000", "#000", "#b692a1"]
   );
 
-  // const animatedTitleY = useTransform(scrollYProgress, [0, 1], ["0%", "-150%"]);
   const animatedTitleY = useTransform(scrollYProgress, [0, 1], ["0%", "-120%"]);
 
   useEffect(() => {
@@ -91,7 +90,7 @@ const Hero: FC = () => {
               >
                 I specialize in turning digital ideas into user-friendly
                 experiences, whether crafting sleek websites or seamless mobile
-                apps. I blend creativity with tech savvy.
+                apps. We blend creativity with tech savvy.
               </motion.h2>
 
               <div className="container absolute bottom-10 left-0 w-full mx-auto">

@@ -11,7 +11,8 @@ const Preloader = () => {
   const [exit, setExit] = useState(false);
 
   useEffect(() => {
-    const flipTimeout = setTimeout(() => setStartFlip(true), 2500);
+    // const flipTimeout = setTimeout(() => setStartFlip(true), 2500);
+    const flipTimeout = setTimeout(() => setStartFlip(true), 500);
     const alignTimeout = setTimeout(() => setAlignText(true), 3700);
     const exitTimeout = setTimeout(() => setExit(true), 5000);
     const finishTimeout = setTimeout(() => setShowPreloader(false), 6500);
