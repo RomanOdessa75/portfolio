@@ -10,7 +10,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { dividerMotion } from "@/utils/animations";
-import AnimatedTitle from "@/components/AnimatedTitle";
+// import AnimatedTitle from "@/components/AnimatedTitle";
 
 const Hero: FC = () => {
   const [titleScope, titleAnimate] = useAnimate();
@@ -158,12 +158,12 @@ const Hero: FC = () => {
               loop
               muted
             />
-            <div className="container w-[100%] overflow-hidden px-4">
+            {/* <div className="container w-[100%] overflow-hidden px-4">
               <AnimatedTitle
                 scrollYProgress={scrollYProgress}
                 animatedTitleY={animatedTitleY}
               />
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
