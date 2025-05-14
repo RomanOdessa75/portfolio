@@ -1,4 +1,5 @@
-import { FC, useEffect, useRef } from "react";
+"use client";
+import { FC, useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import {
   motion,
@@ -20,30 +21,12 @@ import Link from "next/link";
 import Button from "@/components/Button";
 
 const projects = [
-  {
-    name: "Artisan Brew Co.",
-    image: image1,
-  },
-  {
-    name: "Wavelength Studios",
-    image: image2,
-  },
-  {
-    name: "Nova Fitness",
-    image: image3,
-  },
-  {
-    name: "Urban Plates",
-    image: image4,
-  },
-  {
-    name: "Bloom Botanicals",
-    image: image5,
-  },
-  {
-    name: "Bloom Botanicals 1",
-    image: image6,
-  },
+  { name: "Artisan Brew Co.", image: image1 },
+  { name: "Wavelength Studios", image: image2 },
+  { name: "Nova Fitness", image: image3 },
+  { name: "Urban Plates", image: image4 },
+  { name: "Bloom Botanicals", image: image5 },
+  { name: "Bloom Botanicals 1", image: image6 },
 ];
 
 const creativityText = [
@@ -54,14 +37,8 @@ const creativityText = [
 ];
 
 const overlayVariants = {
-  hidden: {
-    opacity: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
+  hidden: { opacity: 0, transition: { duration: 0.3, ease: "easeOut" } },
+  visible: { opacity: 1, transition: { duration: 0.3, ease: "easeOut" } },
 };
 
 const topTextVariants = {
@@ -70,24 +47,12 @@ const topTextVariants = {
     y: -20,
     transition: { duration: 0.3, ease: "easeOut" },
   },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
 };
 
 const bottomTextVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
+  hidden: { opacity: 0, y: 20, transition: { duration: 0.3, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
 };
 
 const buttonVariants = {
@@ -96,14 +61,10 @@ const buttonVariants = {
     y: -20,
     transition: { duration: 0.3, ease: "easeOut" },
   },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
 };
 
-const SelectedWorks: FC = () => {
+const SelectedWorksMobile: FC = () => {
   const imagesRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -111,8 +72,8 @@ const SelectedWorks: FC = () => {
   const creativeRef = useRef<HTMLDivElement>(null);
   const projectListRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
-
   const [, titleAnimate] = useAnimate();
+
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const isCreativeInView = useInView(creativeRef, { once: true, amount: 0.4 });
 
@@ -124,13 +85,22 @@ const SelectedWorks: FC = () => {
   const clipProgress = useTransform(scrollYProgress, [0, 1], [100, 0]);
   const clip = useMotionTemplate`inset(0 0 0 ${clipProgress}%)`;
 
+  // Проверка мобильного режима
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   useEffect(() => {
     if (isInView && titleRef.current && buttonRef.current) {
       const split = new SplitType(titleRef.current, {
         types: "lines,words",
         tagName: "span",
       });
-
       titleRef.current.classList.remove("invisible");
       buttonRef.current.classList.remove("invisible");
 
@@ -164,7 +134,6 @@ const SelectedWorks: FC = () => {
         types: "lines",
         tagName: "span",
       });
-
       creativeRef.current.classList.remove("invisible");
 
       creativeRef.current.querySelectorAll(".line").forEach((line) => {
@@ -191,7 +160,10 @@ const SelectedWorks: FC = () => {
     }
   }, [isCreativeInView, titleAnimate]);
 
+  // ❗ Sticky-эффект включаем только если не mobile
   useEffect(() => {
+    if (isMobile) return;
+
     const calculateImageScrollDistance = () => {
       if (!imagesRef.current) return 0;
       return imagesRef.current.scrollHeight - window.innerHeight;
@@ -251,17 +223,16 @@ const SelectedWorks: FC = () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div ref={wrapperRef} className="relative">
       <section
         ref={sectionRef}
-        className="bg-[#bfccd8] flex w-full h-screen"
+        className="bg-[#bfccd8] flex flex-col md:flex-row w-full h-auto md:h-screen"
         id="projects"
       >
-        {/* Left Side: Scrolling Images */}
-        <div className="w-2/5 h-screen overflow-hidden">
+        <div className="w-full md:w-2/5 h-auto md:h-screen overflow-hidden">
           <div
             ref={imagesRef}
             className="flex flex-col transition-transform duration-300 ease-out"
@@ -270,13 +241,13 @@ const SelectedWorks: FC = () => {
               <Link
                 key={index}
                 href="/"
-                className="w-full h-[33.33vh] relative block"
+                className="w-full h-[60vw] md:h-[33.33vh] relative block"
               >
                 <Image
                   src={image}
                   alt={`${name} image`}
                   className="w-full h-full object-cover"
-                  sizes="50vw"
+                  sizes="100vw"
                   priority={index < 3}
                 />
                 <motion.div
@@ -301,7 +272,7 @@ const SelectedWorks: FC = () => {
                   </div>
                   <div className="flex justify-between items-end">
                     <motion.h3
-                      className="text-white text-4xl"
+                      className="text-white text-2xl md:text-4xl"
                       variants={bottomTextVariants}
                     >
                       Best Present
@@ -313,12 +284,16 @@ const SelectedWorks: FC = () => {
                 </motion.div>
               </Link>
             ))}
+            <div className="md:hidden w-full h-[60vw] bg-[#798e7b] flex items-center justify-center">
+              <Button variant="primary" className="h-20">
+                <span className="text-lg">See other projects</span>
+              </Button>
+            </div>
           </div>
         </div>
 
-        {/* Right Side: Project List */}
-        <div className="w-3/5 h-screen flex flex-col justify-between py-16 px-10">
-          <div className="flex justify-between items-baseline">
+        <div className="hidden md:flex w-3/5 h-screen flex-col justify-between py-16 px-10">
+          <div className="flex justify-between items-baseline flex-col mdl:flex-row">
             <motion.h2
               ref={titleRef}
               className="invisible text-6xl md:text-7xl lg:text-9xl text-left"
@@ -380,7 +355,7 @@ const SelectedWorks: FC = () => {
           <motion.div
             ref={projectListRef}
             style={{ clipPath: clip }}
-            className="w-3/5 ml-auto my-8"
+            className="w-5/6 ml-auto my-10"
           >
             {projects.map(({ name }, index) => (
               <a
@@ -390,7 +365,7 @@ const SelectedWorks: FC = () => {
               >
                 <div className="absolute bottom-0 left-0 w-full h-0 group-hover/project:h-full transition-all duration-700 bg-slate-400 z-0"></div>
                 <div className="relative z-10 flex justify-between items-center">
-                  <div className="flex items-center gap-20">
+                  <div className="flex items-center gap-10 mdl:gap-20">
                     <span className="text-xl md:text-xl">
                       {String(index + 1).padStart(2, "0")}
                     </span>
@@ -414,20 +389,6 @@ const SelectedWorks: FC = () => {
                           d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
                         />
                       </svg>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="size-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                        />
-                      </svg>
                     </div>
                   </div>
                 </div>
@@ -437,7 +398,7 @@ const SelectedWorks: FC = () => {
 
           <motion.div
             ref={creativeRef}
-            className="invisible w-full ml-auto text-[1.4rem] xxl:text-3xl"
+            className="invisible w-full ml-auto text-[0.9rem] mdl:text-[1.2rem]"
           >
             {creativityText.map((line, index) => (
               <div key={index} className="mb-1">
@@ -451,4 +412,4 @@ const SelectedWorks: FC = () => {
   );
 };
 
-export default SelectedWorks;
+export default SelectedWorksMobile;

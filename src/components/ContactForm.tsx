@@ -44,7 +44,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div ref={ref} className="w-full md:w-2/3 pr-0 md:pr-6">
+    <div ref={ref} className="w-full mdl:w-2/3 pr-0 md:pr-6">
       <div className="flex flex-col mb-12">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="relative flex-1 mb-6 md:mb-0">

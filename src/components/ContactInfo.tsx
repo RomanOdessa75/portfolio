@@ -2,8 +2,8 @@ import React from "react";
 
 const ContactInfo = () => {
   return (
-    <div className="w-1/2 flex flex-col items-end justify-around text-white text-xl">
-      <h4 className="text-right mb-6">
+    <div className="w-full mdl:w-1/2 flex mdl:flex-col items-end justify-between mdl:justify-around text-white mdl:text-lg lg:text-xl">
+      <h4 className="text-right mdl:mb-6">
         Alternatively, you can email
         <br />
         Roman.Ryabchinskiy@gmail.com

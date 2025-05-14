@@ -37,7 +37,7 @@ const Button = (
     return (
       <button
         className={twMerge(
-          "btn-primary relative h-12 min-w-[144px] px-4 pr-4 pl-10 rounded-full border border-black inline-flex items-center justify-between gap-1 transition-all duration-500 overflow-hidden",
+          "btn-primary relative h-12 min-w-[144px] px-4 pr-4 pl-10 rounded-full border border-black inline-flex items-center justify-between gap-2 transition-all duration-500 overflow-hidden",
           className
         )}
         {...rest}

@@ -7,7 +7,7 @@ const FooterLogo = () => {
   const [ref, inView] = useInView({ triggerOnce: true });
 
   return (
-    <div ref={ref} className="flex justify-between items-end">
+    <div ref={ref} className="hidden mdl:flex justify-between items-end">
       <div className="flex flex-col justify-center items-center w-[100%]">
         <motion.div
           className="h-[2px] bg-white w-full origin-left bottom-80"
@@ -18,7 +18,7 @@ const FooterLogo = () => {
 
         <div className="w-full">
           <p
-            className="text-white text-[95px] text-center text-nowrap   whitespace-nowrap"
+            className="text-white text-[5rem] lg:text-[95px] text-center text-nowrap   whitespace-nowrap"
             style={{ transform: "scaleY(1.4)" }}
           >
             RYABCHINSKIY ROMAN
