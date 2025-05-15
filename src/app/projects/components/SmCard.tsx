@@ -50,10 +50,11 @@ const SmCard = ({ project, color, className }: SmCardProps) => {
     setIsHovered(true);
   };
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  // const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = () => {
     if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const relativeY = e.clientY - rect.top;
+    // const rect = cardRef.current.getBoundingClientRect(); --> отключил последним
+    // const relativeY = e.clientY - rect.top;               --> отключил последним
     // const isTop = relativeY < rect.height / 2;
 
     // setExitFromTop(isTop);
