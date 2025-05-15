@@ -42,6 +42,7 @@ const config: Config = {
         transform: "transform",
         padding: "padding",
       },
+
       // animation: {
       //   marquee: "marquee 40s linear infinite",
       // },
