@@ -1,72 +1,152 @@
 "use client";
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
-const letters = "ROMAN RYABCHINSKIY".split("");
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
 const Preloader = () => {
-  const [showPreloader, setShowPreloader] = useState(true);
-  const [startFlip, setStartFlip] = useState(false);
-  const [alignText, setAlignText] = useState(false);
-  const [exit, setExit] = useState(false);
+  const [counter, setCounter] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const preloaderRef = useRef<HTMLDivElement>(null);
+  const topHalfRef = useRef<HTMLDivElement>(null);
+  const bottomHalfRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const counterRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // const flipTimeout = setTimeout(() => setStartFlip(true), 2500);
-    const flipTimeout = setTimeout(() => setStartFlip(true), 500);
-    const alignTimeout = setTimeout(() => setAlignText(true), 3700);
-    const exitTimeout = setTimeout(() => setExit(true), 5000);
-    const finishTimeout = setTimeout(() => setShowPreloader(false), 6500);
+    const ctx = gsap.context(() => {
+      gsap.set(preloaderRef.current, {
+        clipPath: "polygon(0% 45%, 0% 45%, 0% 55%, 0% 55%)",
+      });
 
-    return () => {
-      clearTimeout(flipTimeout);
-      clearTimeout(alignTimeout);
-      clearTimeout(exitTimeout);
-      clearTimeout(finishTimeout);
-    };
+      gsap.to(preloaderRef.current, {
+        clipPath: "polygon(0% 45%, 25% 45%, 25% 55%, 0% 55%)",
+        duration: 1.5,
+        ease: "power3.inOut",
+        delay: 0.5,
+      });
+
+      gsap.to(preloaderRef.current, {
+        clipPath: "polygon(0% 45%, 100% 45%, 100% 55%, 0% 55%)",
+        duration: 2,
+        ease: "power3.inOut",
+        delay: 2,
+        onStart: () => {
+          gsap.to(progressBarRef.current, {
+            width: "100vw",
+            duration: 2,
+            ease: "power3.inOut",
+          });
+
+          const counterTween = gsap.to(
+            {},
+            {
+              duration: 2,
+              ease: "power3.inOut",
+              onUpdate: () => {
+                const progress = Math.round(counterTween.progress() * 100);
+                setCounter(progress);
+              },
+            }
+          );
+        },
+      });
+
+      gsap.to(preloaderRef.current, {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        duration: 1,
+        ease: "power3.inOut",
+        delay: 4.5,
+        onComplete: () => {
+          gsap.to(progressBarRef.current, {
+            opacity: 0,
+            duration: 0.3,
+          });
+
+          gsap.set(wrapperRef.current, {
+            backgroundColor: "transparent",
+          });
+
+          gsap.set([topHalfRef.current, bottomHalfRef.current], {
+            display: "block",
+          });
+
+          gsap.set(preloaderRef.current, {
+            display: "none",
+          });
+
+          gsap.to(topHalfRef.current, {
+            y: "-100%",
+            duration: 1.2,
+            ease: "power3.inOut",
+          });
+
+          gsap.to(bottomHalfRef.current, {
+            y: "100%",
+            duration: 1.2,
+            ease: "power3.inOut",
+            onComplete: () => {
+              gsap.to(wrapperRef.current, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                  setLoaded(true);
+                },
+              });
+            },
+          });
+        },
+      });
+    });
+
+    return () => ctx.revert();
   }, []);
 
-  return (
-    <AnimatePresence>
-      {showPreloader && (
-        <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#b692a1]"
-          initial={{ x: 0 }}
-          animate={exit ? { x: "100%" } : {}}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-        >
-          <div className="flex gap-[1rem] perspective-[1000px]">
-            {letters.map((char, index) => {
-              const isEven = index % 2 === 0;
-              const yOffset = alignText ? "0px" : isEven ? "-20px" : "20px";
+  if (loaded) return null;
 
-              return (
-                <motion.div
-                  key={index}
-                  className="w-12 md:w-16 h-28 md:h-32 flex items-center justify-center"
-                  animate={{ y: yOffset }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                >
-                  <motion.div
-                    className="w-full h-full flex items-center justify-center"
-                    style={{
-                      rotateY: startFlip ? "0deg" : "90deg",
-                      transition: "transform 1s ease-in-out",
-                      transformStyle: "preserve-3d",
-                      backfaceVisibility: "hidden",
-                    }}
-                  >
-                    <span className="text-6xl md:text-8xl font-extrabold text-white block">
-                      {char}
-                    </span>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+  return (
+    <div
+      ref={wrapperRef}
+      className="fixed inset-0 z-50 w-full h-full bg-[#bfccd8] overflow-hidden z-[101]"
+      style={{ pointerEvents: "none" }}
+    >
+      <div
+        ref={preloaderRef}
+        className="absolute inset-0 flex items-center justify-center overflow-hidden"
+        style={{
+          clipPath: "polygon(0% 45%, 0% 45%, 0% 55%, 0% 55%)",
+          willChange: "clip-path",
+          backgroundColor: "#15161b",
+        }}
+      >
+        <div
+          ref={progressBarRef}
+          className="absolute top-1/2 left-0 -translate-y-1/2 w-1/4 px-8 py-6 flex justify-between items-center text-[#ffbb00]"
+        >
+          <p className="text-sm mdl:text-2xl uppercase font-medium hidden md:block">
+            Loading
+          </p>
+          <p className="text-sm mdl:text-2xl uppercase font-medium">
+            /
+            <span ref={counterRef} id="counter">
+              {counter}
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div
+        ref={topHalfRef}
+        className="absolute top-0 left-0 w-full h-1/2 bg-[#15161b]"
+        style={{ display: "none", willChange: "transform" }}
+      />
+
+      <div
+        ref={bottomHalfRef}
+        className="absolute bottom-0 left-0 w-full h-1/2 bg-[#15161b]"
+        style={{ display: "none", willChange: "transform" }}
+      />
+    </div>
   );
 };
 

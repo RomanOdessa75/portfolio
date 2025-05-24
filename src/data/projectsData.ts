@@ -14,4 +14,5 @@ export const projects: Project[] = Array.from({ length: 20 }, (_, index) => ({
   subtitle: "Printing and personalized gifts",
   type: "e-commerce",
   createdAt: "2025",
+  slug: "my-cool-project",
 }));

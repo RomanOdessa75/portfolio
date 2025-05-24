@@ -16,7 +16,7 @@
     "@neondatabase/serverless": "^1.0.0",
     "drizzle-orm": "^0.41.0",
     "framer-motion": "^12.5.0",
-    "gsap": "^3.12.7",
+    "gsap": "^3.13.0",
     "lenis": "^1.2.3",
     "motion": "^12.4.10",
     "next": "^15.2.1",

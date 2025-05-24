@@ -1,4 +1,6 @@
 import { FC, useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import SplitType from "split-type";
 import {
   motion,
@@ -15,8 +17,6 @@ import image3 from "@/assets/works-slider/3.avif";
 import image4 from "@/assets/works-slider/4.avif";
 import image5 from "@/assets/works-slider/5.avif";
 import image6 from "@/assets/works-slider/6.avif";
-import Image from "next/image";
-import Link from "next/link";
 import Button from "@/components/Button";
 
 const projects = [
@@ -330,50 +330,52 @@ const SelectedWorks: FC = () => {
               className="invisible flex items-center"
               variants={buttonVariants}
             >
-              <Button
-                variant="text"
-                className="text-lg transition-all duration-300 ease-in-out group/button"
-                iconAfter={
-                  <div className="overflow-hidden size-7">
-                    <div className="h-6 w-20 flex group-hover/button:-translate-x-1/2 transition-transform duration-500">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="100%"
-                        height="100%"
-                        viewBox="0 0 13 16"
-                        fill="none"
-                        preserveAspectRatio="xMidYMid meet"
-                        aria-hidden="true"
-                        role="img"
-                      >
-                        <path
-                          d="M0.545457 9.56589L0.545478 8.34759L8.89964 8.3476L5.15766 4.60563L6.02788 3.7354L11.2492 8.95675L6.0279 14.1781L5.15769 13.3079L8.89964 9.56593L0.545457 9.56589Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="100%"
-                        height="100%"
-                        viewBox="0 0 13 16"
-                        fill="none"
-                        preserveAspectRatio="xMidYMid meet"
-                        aria-hidden="true"
-                        role="img"
-                      >
-                        <path
-                          d="M0.545457 9.56589L0.545478 8.34759L8.89964 8.3476L5.15766 4.60563L6.02788 3.7354L11.2492 8.95675L6.0279 14.1781L5.15769 13.3079L8.89964 9.56593L0.545457 9.56589Z"
-                          fill="currentColor"
-                        />
-                      </svg>
+              <Link href="/projects" passHref legacyBehavior>
+                <Button
+                  variant="text"
+                  className="text-lg transition-all duration-300 ease-in-out group/button"
+                  iconAfter={
+                    <div className="overflow-hidden size-7">
+                      <div className="h-6 w-20 flex group-hover/button:-translate-x-1/2 transition-transform duration-500">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="100%"
+                          height="100%"
+                          viewBox="0 0 13 16"
+                          fill="none"
+                          preserveAspectRatio="xMidYMid meet"
+                          aria-hidden="true"
+                          role="img"
+                        >
+                          <path
+                            d="M0.545457 9.56589L0.545478 8.34759L8.89964 8.3476L5.15766 4.60563L6.02788 3.7354L11.2492 8.95675L6.0279 14.1781L5.15769 13.3079L8.89964 9.56593L0.545457 9.56589Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="100%"
+                          height="100%"
+                          viewBox="0 0 13 16"
+                          fill="none"
+                          preserveAspectRatio="xMidYMid meet"
+                          aria-hidden="true"
+                          role="img"
+                        >
+                          <path
+                            d="M0.545457 9.56589L0.545478 8.34759L8.89964 8.3476L5.15766 4.60563L6.02788 3.7354L11.2492 8.95675L6.0279 14.1781L5.15769 13.3079L8.89964 9.56593L0.545457 9.56589Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
                     </div>
-                  </div>
-                }
-              >
-                <span className="font-extralight transition-all duration-300 group-hover/button:font-normal">
-                  View other projects
-                </span>
-              </Button>
+                  }
+                >
+                  <span className="font-extralight transition-all duration-300 group-hover/button:font-normal">
+                    View other projects
+                  </span>
+                </Button>
+              </Link>
             </motion.div>
           </div>
 

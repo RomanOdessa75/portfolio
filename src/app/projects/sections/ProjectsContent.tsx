@@ -1,15 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BurgerBtn from "@/components/BurgerBtn";
 import IntroSection from "./IntroSection";
 import ProjectsGrid from "./ProjectsGrid";
 import PageFooter from "./PageFooter";
 import { AnimatePresence, motion } from "framer-motion";
 import NavMenu from "@/components/NavMenu";
+import Lenis from "lenis";
 
 const ProjectsContent = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time: DOMHighResTimeStamp) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
 
   return (
     <>

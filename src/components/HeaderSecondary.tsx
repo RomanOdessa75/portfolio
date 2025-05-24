@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import BurgerBtn from "@/components/BurgerBtn";
 import NavMenu from "@/components/NavMenu";
 
-const HeaderMobile: FC = () => {
+const HeaderSecondary: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isTitleVisible, setIsTitleVisible] = useState(true);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -27,7 +27,7 @@ const HeaderMobile: FC = () => {
     <header className="relative">
       <div
         ref={titleRef}
-        className="absolute top-4 left-4 z-10 text-white leading-none font-semibold text-lg whitespace-pre"
+        className="absolute top-4 left-4 z-10 text-black leading-none font-semibold text-lg whitespace-pre"
       >
         {isTitleVisible && (
           <motion.div
@@ -42,7 +42,7 @@ const HeaderMobile: FC = () => {
         )}
       </div>
 
-      <div className="fixed top-4 right-4 z-[1]">
+      <div className="fixed top-4 right-4 z-[2]">
         <BurgerBtn isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
       </div>
 
@@ -52,7 +52,7 @@ const HeaderMobile: FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000]"
+            className="fixed inset-0 z-[1]"
           >
             <NavMenu onClose={() => setIsOpen(false)} />
           </motion.div>
@@ -62,4 +62,4 @@ const HeaderMobile: FC = () => {
   );
 };
 
-export default HeaderMobile;
+export default HeaderSecondary;

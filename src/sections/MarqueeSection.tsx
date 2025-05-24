@@ -91,7 +91,7 @@ const MarqueeSection: React.FC = () => {
             </div>
             <div className="w-full">
               <p className="text-2xl md:text-5xl font-extralight leading-relaxed">
-                our expertise.
+                my expertise.
               </p>
             </div>
           </div>
