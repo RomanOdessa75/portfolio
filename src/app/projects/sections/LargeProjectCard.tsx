@@ -73,13 +73,6 @@ const LargeProjectCard = ({
     const relativeY = e.clientY - rect.top;
     const isTop = relativeY < rect.height / 2;
 
-    // console.log("Leaving via top half:", isTop);
-    // console.log("Exit position:", {
-    //   relativeY,
-    //   rectHeight: rect.height,
-    //   isTop,
-    // });
-
     setExitFromTop(isTop);
     setIsHovered(false);
   };

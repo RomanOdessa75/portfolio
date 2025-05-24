@@ -5,6 +5,7 @@ export interface Project {
   subtitle: string;
   type: string;
   createdAt: string;
+  slug: string;
 }
 
 export const projects: Project[] = Array.from({ length: 20 }, (_, index) => ({

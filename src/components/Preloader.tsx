@@ -107,7 +107,7 @@ const Preloader = () => {
   return (
     <div
       ref={wrapperRef}
-      className="fixed inset-0 z-50 w-full h-full bg-[#bfccd8] overflow-hidden z-[101]"
+      className="fixed inset-0 w-full h-full bg-[#bfccd8] overflow-hidden z-[101]"
       style={{ pointerEvents: "none" }}
     >
       <div
