@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactLenis from "lenis/react";
 import Section from "@/app/projects/components/Section";
 import HorizontalScroll from "@/app/projects/components/HorizontalScroll";
@@ -12,7 +12,7 @@ import { projects } from "@/data/projectsData";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ProjectPageContent() {
   const currentProject = projects[0];
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const mainContainerRef = useRef<HTMLDivElement>(null);
   const sectionToToggleRef = useRef<HTMLDivElement>(null);
@@ -144,6 +145,16 @@ export default function ProjectPageContent() {
     },
     { scope: mainContainerRef, dependencies: [isMdlOrLarger, router] }
   );
+
+  useEffect(() => {
+    const scrollToTop = searchParams.get("scrollToTop");
+    if (scrollToTop === "true") {
+      // Принудительно скроллим к началу
+      window.scrollTo(0, 0);
+      // Удаляем параметр из URL
+      router.replace("/projects", { scroll: false });
+    }
+  }, [searchParams, router]);
 
   return (
     <ReactLenis root>

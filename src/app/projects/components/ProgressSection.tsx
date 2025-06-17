@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 interface ProgressSectionProps {
   className?: string;
@@ -12,6 +13,65 @@ const ProgressSection: React.FC<ProgressSectionProps> = ({
   progressBarRef,
   fillColor = "#798e7b",
 }) => {
+  const router = useRouter();
+  const hasNavigated = useRef(false);
+
+  useEffect(() => {
+    const progressElement = progressBarRef.current;
+    if (!progressElement) return;
+
+    const checkProgress = () => {
+      if (hasNavigated.current) return;
+
+      const computedStyle = window.getComputedStyle(progressElement);
+      const transform = computedStyle.transform;
+
+      // Проверяем transform matrix
+      if (transform && transform !== "none") {
+        const matrixMatch = transform.match(/matrix\(([^)]+)\)/);
+        if (matrixMatch) {
+          const values = matrixMatch[1]
+            .split(",")
+            .map((v) => parseFloat(v.trim()));
+          const scaleX = values[0]; // первое значение в matrix - это scaleX
+
+          if (scaleX >= 0.99 && !hasNavigated.current) {
+            hasNavigated.current = true;
+            // Используем жесткий переход для гарантированного скролла к началу
+            window.location.href = "/projects";
+          }
+        }
+      }
+
+      // Также проверяем прямое значение scaleX
+      const scaleXMatch =
+        progressElement.style.transform.match(/scaleX\(([^)]+)\)/);
+      if (scaleXMatch) {
+        const scaleValue = parseFloat(scaleXMatch[1]);
+        if (scaleValue >= 0.99 && !hasNavigated.current) {
+          hasNavigated.current = true;
+          // Используем жесткий переход для гарантированного скролла к началу
+          window.location.href = "/projects";
+        }
+      }
+    };
+
+    // Проверяем каждые 50ms
+    const interval = setInterval(checkProgress, 50);
+
+    // Также добавляем MutationObserver для дополнительной надежности
+    const observer = new MutationObserver(checkProgress);
+    observer.observe(progressElement, {
+      attributes: true,
+      attributeFilter: ["style"],
+    });
+
+    return () => {
+      clearInterval(interval);
+      observer.disconnect();
+    };
+  }, [progressBarRef, router]);
+
   return (
     <div
       className={`w-full flex flex-col justify-between p-6 md:p-8 text-black relative overflow-hidden ${className}`}
