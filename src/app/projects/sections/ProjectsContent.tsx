@@ -43,7 +43,6 @@ const ProjectsContent = () => {
         {isOpen && <NavMenu onClose={() => setIsOpen(false)} />}
       </AnimatePresence>
 
-      {/* Sections */}
       <IntroSection />
       <ProjectsGrid />
       <PageFooter />

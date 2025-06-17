@@ -91,7 +91,7 @@ export const projectImages = pgTable("project_images", {
     .references(() => projects.id, { onDelete: "cascade" }),
   imageUrl: varchar("image_url", { length: 255 }).notNull(),
   alt: varchar("alt", { length: 255 }), // если нужно описание изображения
-  order: integer("order"), // если хочешь задать порядок отображения
+  order: integer("order"), // если надо задать порядок отображения
   lockedYN: integer("locked_YN").notNull().default(0),
 });
 
@@ -154,7 +154,7 @@ export const posts = pgTable("posts", {
   lockedYN: integer("locked_YN").notNull().default(0),
 });
 
-// Связь многие ко многим (посты <-> теги)
+// Связь многие ко многим (посты <-> теги) - ???
 export const postTags = pgTable(
   "post_tags",
   {

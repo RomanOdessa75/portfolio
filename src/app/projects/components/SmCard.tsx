@@ -36,7 +36,6 @@ const SmCard = ({ project, color, className }: SmCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [enteredFromTop, setEnteredFromTop] = useState(true);
-  //   const [exitFromTop, setExitFromTop] = useState(true);
   const isMin460px = useMediaQuery("(min-width: 460px)");
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -46,18 +45,11 @@ const SmCard = ({ project, color, className }: SmCardProps) => {
     const isTop = relativeY < rect.height / 2;
 
     setEnteredFromTop(isTop);
-    // setExitFromTop(isTop);
     setIsHovered(true);
   };
 
-  // const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
   const handleMouseLeave = () => {
     if (!cardRef.current) return;
-    // const rect = cardRef.current.getBoundingClientRect(); --> отключил последним
-    // const relativeY = e.clientY - rect.top;               --> отключил последним
-    // const isTop = relativeY < rect.height / 2;
-
-    // setExitFromTop(isTop);
     setIsHovered(false);
   };
 

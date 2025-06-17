@@ -23,7 +23,7 @@
 
   .left {
     clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
-    background: #111; /* или ваш фон */
+    background: #111;
     height: 100vh;
   }
 
