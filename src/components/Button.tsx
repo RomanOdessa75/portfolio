@@ -43,7 +43,7 @@ const Button = (
         {...rest}
       >
         <div className="bg-fill bg-black"></div>
-        <span className="relative z-10 uppercase text-[clamp(0.625rem,2.5vw,0.95rem)] leading-tight transition-colors duration-500 truncate text-content">
+        <span className="relative z-9 uppercase text-[clamp(0.625rem,2.5vw,0.95rem)] leading-tight transition-colors duration-500 truncate text-content">
           {children}
         </span>
         <div className="relative flex items-center justify-center w-10 h-10 shrink-0">
